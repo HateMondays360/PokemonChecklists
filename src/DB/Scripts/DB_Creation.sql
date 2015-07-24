@@ -12,7 +12,8 @@ Create Table PokemonGames
 	GameID	int identity(1,1) not null
 	,GameName	nvarchar(255) not null
 	,ShortName	nvarchar(20) not null
-	,GenID		int
+	,GenID		int not null
+	,GameCode		nvarchar(10) not null
 	,CONSTRAINT PK_PokemonGames_GameID Primary key ( GameID )
 	,CONSTRAINT FK_GenID_PokemonGeneration_GenID Foreign Key (GenID) References PokemonGeneration(GenID)
 )
@@ -20,8 +21,9 @@ Create Table PokemonGames
 Create Table Task
 (
 	TaskID	int identity(1,1) not null
-	,TaskDescription nvarchar(255) not null
-	,GameID	int
+	,Name nvarchar(255) not null
+	,GameID	int not null
+	,Tip nvarchar(255) null
 	,OrderID int null
 	,CONSTRAINT PK_Task_TaskID Primary Key (TaskID)
 	,CONSTRAINT FK_GameID_PokemonGames_GameID Foreign Key (GameID) References PokemonGames(GameID)
@@ -30,7 +32,7 @@ Create Table Task
 Create Table SubTask
 (
 	SubTaskID	int identity(1,1) not null
-	,TaskDescription nvarchar(255) not null
+	,Name nvarchar(255) not null
 	,OrderID int null
 	,TaskID int
 	,CONSTRAINT PK_SubTask Primary Key (SubTaskID)
