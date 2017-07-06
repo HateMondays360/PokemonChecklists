@@ -13,7 +13,7 @@ Create Table PokemonGames
 	,GameName	nvarchar(255) not null
 	,ShortName	nvarchar(20) not null
 	,GenID		int not null
-	,GameCode		nvarchar(10) not null
+	,GameCode	nvarchar(10) not null
 	,CONSTRAINT PK_PokemonGames_GameID Primary key ( GameID )
 	,CONSTRAINT FK_GenID_PokemonGeneration_GenID Foreign Key (GenID) References PokemonGeneration(GenID)
 )
@@ -25,6 +25,8 @@ Create Table Task
 	,GameID	int not null
 	,Tip nvarchar(255) null
 	,OrderID int null
+	,TaskClassName	nvarchar(100) null
+	,ParentTaskID	int null
 	,CONSTRAINT PK_Task_TaskID Primary Key (TaskID)
 	,CONSTRAINT FK_GameID_PokemonGames_GameID Foreign Key (GameID) References PokemonGames(GameID)
 )
